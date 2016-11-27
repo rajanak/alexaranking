@@ -15,12 +15,17 @@ ActiveAdmin.register User do
         column :email
         column :created_at
         column :sign_in_count
-        actions
+        column "" do |user|
+           link_to "login", become_user_path(user)
+        end
+        
+        actions 
     end
     permit_params :name, :email, :password, :password_confirmation
 
     form do |f|
         f.inputs 'User' do
+            
             f.input :name
             f.input :email
             f.input :password
